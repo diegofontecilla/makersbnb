@@ -15,10 +15,10 @@ task :setup do
     connection = PG.connect
     connection.exec("CREATE DATABASE #{database};")
     connection = PG.connect(dbname: database)
-    connection.exec("CREATE TABLE apartments (id SERIAL PRIMARY KEY, \
-                    title VARCHAR(140), name VARCHAR(60), users_id INTEGER REFERENCES users(id));")
     connection.exec("CREATE TABLE users (id SERIAL PRIMARY KEY, \
                     name VARCHAR(140), email VARCHAR(60), password VARCHAR(60));")
+    connection.exec("CREATE TABLE apartments (id SERIAL PRIMARY KEY, \
+                    title VARCHAR(140), name VARCHAR(60), users_id INTEGER REFERENCES users(id));")
   end
 end
 
@@ -47,5 +47,9 @@ task :teardown do
     connection = PG.connect
     # Drop each database in the list
     connection.exec("DROP DATABASE #{database}")
+  end
+
+  task :say_hello do
+    p "Hello World!"
   end
 end
