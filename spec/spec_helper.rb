@@ -4,7 +4,6 @@
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
-Rake.application.load_rakefile
 # RSpec.configure do |config|
 #   config.before(:each) do
 #     setup_test_database!
@@ -19,6 +18,8 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'rake'
+
+Rake.application.load_rakefile
 
 # Tell Capybara to talk to Makersbnb
 Capybara.app = MakersBnb
