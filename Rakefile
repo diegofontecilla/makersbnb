@@ -16,7 +16,9 @@ task :setup do
     connection.exec("CREATE DATABASE #{database};")
     connection = PG.connect(dbname: database)
     connection.exec("CREATE TABLE apartments (id SERIAL PRIMARY KEY, \
-                    title VARCHAR(140), name VARCHAR(60));")
+                    title VARCHAR(140), name VARCHAR(60), users_id INTEGER REFERENCES users(id));")
+    connection.exec("CREATE TABLE users (id SERIAL PRIMARY KEY, \
+                    name VARCHAR(140), email VARCHAR(60), password VARCHAR(60));")
   end
 end
 
@@ -27,8 +29,9 @@ task :test_database_setup do
   connection = PG.connect(dbname: 'makersbnb_test')
 
   # Clear the databases
-  connection.exec("TRUNCATE apartments;")
+  connection.exec("TRUNCATE apartments, users;")
   connection.exec("ALTER SEQUENCE apartments_id_seq RESTART;")
+  connection.exec("ALTER SEQUENCE users_id_seq RESTART;")
 
 end
 
