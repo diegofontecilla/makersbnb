@@ -1,0 +1,15 @@
+<ul>
+  <% $listings.each do |listing| %>
+    <li> <%= "title: #{listing[:title]}, owner: #{listing[:owner]}" %> </li>
+  <% end %>
+</ul>
+
+<form action="/" method="post">
+    <p>title:</p>
+    <input type="text" name="title">
+    <p>owner:</p>
+    <input type="text" name="owner">
+    <p> </p>
+  </label>
+  <input type="submit" value="Submit">
+</form>
