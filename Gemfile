@@ -4,7 +4,10 @@ source "https://rubygems.org"
 
 ruby '2.5.0'
 
-gem 'rspec'
 gem 'sinatra'
+gem 'pg'
+gem 'rake'
+gem 'rspec'
 gem 'capybara'
 gem 'rack'
+gem 'rubocop', '0.56.0'
