@@ -3,7 +3,14 @@ require 'sinatra'
 
 class MakersBnb < Sinatra::Base
 
+	$listings = []
+
 	get '/' do
-		'Hello world'
-  end
+		erb :index
+	end
+	
+	post "/" do
+		$listings << {title: params["title"], owner: params["owner"]}
+		redirect "/"
+	end
 end
