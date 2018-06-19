@@ -18,6 +18,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'rake'
+require 'pg'
 
 Rake.application.load_rakefile
 
