@@ -7,28 +7,28 @@ class MakersBnb < Sinatra::Base
 	enable :sessions
 
 	get '/' do
-		@listings = Listing.all
 		erb :index
 	end
 
-	post "/" do
-		Listing.create(params["title"], params["owner"], params["price"])
-		redirect "/"
+	get "/listings" do
+		@listings = Listing.all
+		@user = User.all.select { |user| user.id == session["id"] }[0]
+		erb :"/listings/index"
 	end
 
-	get "/signup" do
-		erb :signup
-	end
-
-	post "/signup" do
+	post "/listings" do
 		user = User.create(name: params["name"], email: params["email"], password: params["password"])
 		session[:id] = user.id
-		redirect "signup_successful"
+		redirect "/listings"
 	end
 
-	get "/signup_successful" do
-		@user = User.all.select { |user| user.id == session["id"] }[0]
-		puts @user
-		erb :signup_successful
+	get "/listings/new" do
+		erb :"/listings/new"
 	end
+
+	post "/listings/new" do
+		Listing.create(params["title"], params["owner"], params["price"])
+		redirect "/listings"
+	end
+	
 end

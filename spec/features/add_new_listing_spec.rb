@@ -1,6 +1,6 @@
 feature 'adding new property to the list' do
   scenario 'add property' do
-    visit '/'
+    visit '/listings/new'
     fill_in("title", with: "Lovely flat in London")
     fill_in("owner", with: "Rahul")
     fill_in("price", with: "1.23")

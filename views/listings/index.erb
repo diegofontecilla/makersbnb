@@ -1,0 +1,9 @@
+<% if @user %>
+<%= "Welcome, #{@user.name}!"  %>
+<% end %>
+
+<ul>
+  <% @listings.each do |listing| %>
+    <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}, price: £#{listing.listing_price}" %> </li>
+  <% end %>
+</ul>
