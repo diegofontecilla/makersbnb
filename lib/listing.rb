@@ -1,8 +1,6 @@
 require 'pg'
 
 class Listing
-  @@listings_array = []
-
   attr_reader :listing_id, :listing_title, :listing_owner
 
   def initialize(listing_id, listing_title, listing_owner)
@@ -27,7 +25,7 @@ class Listing
       connection = PG.connect(dbname: 'makersbnb')
     end
     result = connection.exec("SELECT * FROM apartments")
-    result.map {|listing| Listing.new(listing['id'], listing['title'], listing['owner'])}
+    result.map { |listing| Listing.new(listing['id'], listing['title'], listing['owner']) }
   end
 
 end
