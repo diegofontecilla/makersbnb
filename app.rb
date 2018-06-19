@@ -12,7 +12,7 @@ class MakersBnb < Sinatra::Base
 	end
 
 	post "/" do
-		Listing.create(params["title"], params["owner"])
+		Listing.create(params["title"], params["owner"], params["price"])
 		redirect "/"
 	end
 
