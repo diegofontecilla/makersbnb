@@ -1,6 +1,6 @@
 <ul>
   <% @listings.each do |listing| %>
-    <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}" %> </li>
+    <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}, price: £#{listing.listing_price}" %> </li>
   <% end %>
 </ul>
 
@@ -9,7 +9,8 @@
     <input type="text" name="title">
     <p>owner:</p>
     <input type="text" name="owner">
-    <p> </p>
+    <p>price: </p>
+    <input type="text" name="price">
   </label>
   <input type="submit" value="Submit">
 </form>
