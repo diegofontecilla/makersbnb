@@ -27,8 +27,8 @@ class MakersBnb < Sinatra::Base
 	end
 
 	post "/listings/new" do
-		Listing.create(params["title"], params["owner"], params["price"])
+		Listing.create(params["title"], params["owner"], params["price"], params["description"])
 		redirect "/listings"
 	end
-	
+
 end
