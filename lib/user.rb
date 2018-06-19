@@ -28,4 +28,15 @@ class User
     result.map { |user| User.new(id: user["id"], name: user['name'], email: user['email'], password: user['password']) }
   end
 
+  def self.find(id)
+    return nil unless id
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'makersbnb_test')
+    else
+      connection = PG.connect(dbname: 'makersbnb')
+    end
+    result = connection.exec("SELECT * FROM users WHERE id = '#{id}'")
+    User.new(id: result[0]['id'], name: result[0]['name'], email: result[0]['email'], password: result[0]['password'])
+  end
+
 end

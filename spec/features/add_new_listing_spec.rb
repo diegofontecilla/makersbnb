@@ -1,5 +1,10 @@
 feature 'adding new property to the list' do
   scenario 'add property' do
+    visit '/'
+    fill_in("name", with: "Some Name")
+    fill_in("email", with: "someemail@email.com")
+    fill_in("password", with: "test1234")
+    click_button("Submit")
     visit '/listings/new'
     fill_in("title", with: "Lovely flat in London")
     fill_in("owner", with: "Rahul")

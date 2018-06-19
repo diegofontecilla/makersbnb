@@ -23,6 +23,7 @@ class MakersBnb < Sinatra::Base
 	end
 
 	get "/listings/new" do
+		@user = User.find(session[:id])
 		erb :"/listings/new"
 	end
 
@@ -30,5 +31,5 @@ class MakersBnb < Sinatra::Base
 		Listing.create(params["title"], params["owner"], params["price"])
 		redirect "/listings"
 	end
-	
+
 end

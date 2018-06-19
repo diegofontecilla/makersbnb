@@ -1,3 +1,4 @@
+<% if @user %>
 <form action="/listings/new" method="post">
     <p>title:</p>
     <input type="text" name="title">
@@ -8,3 +9,7 @@
   </label>
   <input type="submit" value="Submit">
 </form>
+<% else %>
+<h3>You have to be logged in before you can list an apartment</h3>
+<a href='/'>Sign up here</a>
+<% end %>
