@@ -1,6 +1,6 @@
 <ul>
-  <% $listings.each do |listing| %>
-    <li> <%= "title: #{listing[:title]}, owner: #{listing[:owner]}" %> </li>
+  <% @listings.each do |listing| %>
+    <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}" %> </li>
   <% end %>
 </ul>
 

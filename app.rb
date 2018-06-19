@@ -1,16 +1,16 @@
 require 'sinatra/base'
 require 'sinatra'
+require_relative './lib/listing'
 
 class MakersBnb < Sinatra::Base
 
-	$listings = []
-
 	get '/' do
+		@listings = Listing.all
 		erb :index
 	end
-	
+
 	post "/" do
-		$listings << {title: params["title"], owner: params["owner"]}
+		Listing.create(params["title"], params["owner"])
 		redirect "/"
 	end
 end

@@ -1,3 +1,5 @@
+require 'pg'
+
 class Listing
   @@listings_array = []
 
