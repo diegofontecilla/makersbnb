@@ -1,9 +1,11 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require 'sinatra'
 require_relative './lib/listing'
 require_relative './lib/user'
 
 class MakersBnb < Sinatra::Base
+	register Sinatra::Flash
 	enable :sessions
 
 	get '/' do
@@ -41,6 +43,9 @@ class MakersBnb < Sinatra::Base
 		if user
 			session[:id] = user.id
 			redirect '/listings/new'
+		else
+			flash[:notice] = "Please check your email or password"
+			redirect '/sessions/new'
 		end
 	end
 
