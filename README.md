@@ -39,9 +39,3 @@ Very basic classified adverts for apartment rental.
 - User is redirected back home
 - Home page displays all properties added
 
-## Test test
-Hello!
-
-## User stories 5 and 6
-- Users can include a description and available price in their listing
-- Listings can show their available dates

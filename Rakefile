@@ -18,7 +18,8 @@ task :setup do
     connection.exec("CREATE TABLE users (id SERIAL PRIMARY KEY, \
                     name VARCHAR(140), email VARCHAR(60), password VARCHAR(60));")
     connection.exec("CREATE TABLE apartments (id SERIAL PRIMARY KEY, \
-                    title VARCHAR(140), owner VARCHAR(60), price VARCHAR(20), description VARCHAR(2000));")
+                    title VARCHAR(140), owner VARCHAR(60), price VARCHAR(8), description VARCHAR(2000), available_dates VARCHAR(900));")
+
     # When we want to connect the database tables, use this:
     # connection.exec("CREATE TABLE apartments (id SERIAL PRIMARY KEY, title VARCHAR(140), owner VARCHAR(60), users_id INTEGER REFERENCES users(id));")
   end
