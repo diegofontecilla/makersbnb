@@ -1,5 +1,5 @@
 <% if @user %>
-<h2>Wellcome <%=@user.email%> </h2>
+<h2>Welcome <%=@user.email%> </h2>
 <form action="/listings/new" method="post">
     <p>title:</p>
     <input type="text" name="title">
@@ -16,3 +16,7 @@
 <h3>You have to be logged in before you can list an apartment</h3>
 <a href='/'>Sign up here</a>
 <% end %>
+
+<form action="/sessions/destroy" method="post">
+  <input type="submit" value="Sign out">
+</form>
