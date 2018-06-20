@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra'
 require_relative './lib/listing'
 require_relative './lib/user'
+require_relative './lib/date_parser'
 
 class MakersBnb < Sinatra::Base
 	enable :sessions
@@ -27,7 +28,10 @@ class MakersBnb < Sinatra::Base
 	end
 
 	post "/listings/new" do
-		Listing.create(params["title"], params["owner"], params["price"], params["description"], params["available_dates"])
+		@dates = DateParser.to_str(
+			DateParser.parse( params["available_dates"] )
+		)
+		Listing.create(params["title"], params["owner"], params["price"], params["description"], @dates)
 		redirect "/listings"
 	end
 
