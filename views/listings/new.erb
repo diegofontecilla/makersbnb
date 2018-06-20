@@ -1,4 +1,5 @@
 <% if @user %>
+<h2>Wellcome <%=@user.email%> </h2>
 <form action="/listings/new" method="post">
     <p>title:</p>
     <input type="text" name="title">
