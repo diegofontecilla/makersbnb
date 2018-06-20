@@ -19,6 +19,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'rake'
 require 'pg'
+require_relative './features/web_helpers'
 
 Rake.application.load_rakefile
 
