@@ -4,6 +4,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     ast (2.4.0)
+    bcrypt (3.1.12)
     capybara (3.2.1)
       addressable
       mini_mime (>= 0.1.3)
@@ -56,6 +57,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.3)
       tilt (~> 2.0)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     tilt (2.0.8)
     unicode-display_width (1.4.0)
     xpath (3.1.0)
@@ -65,6 +68,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   capybara
   pg
   rack
@@ -72,6 +76,7 @@ DEPENDENCIES
   rspec
   rubocop (= 0.56.0)
   sinatra
+  sinatra-flash
 
 RUBY VERSION
    ruby 2.5.0p0
