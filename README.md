@@ -42,6 +42,5 @@ Very basic classified adverts for apartment rental.
 ## Test test
 Hello!
 
-## User stories 5 and 6
-Users can include a description and available price in their listing
+## User stories 6
 Listings can show their available dates
