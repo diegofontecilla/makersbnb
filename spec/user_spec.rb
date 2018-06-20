@@ -11,4 +11,35 @@ describe User do
     expect(all_emails).to include "johndoe@abc.def"
   end
 
+  describe '.find' do
+    it 'finds a user by ID' do
+      user = User.create(name: "John Doe", email: "johndoe@abc.def", password: "test1234")
+
+      expect(User.find(user.id).email).to eq user.email
+    end
+
+    it 'returns nil if there is no ID given' do
+      expect(User.find(nil)).to eq nil
+    end
+  end
+
+  describe '.authenticate' do
+    it 'returns a user given a correct email and password if one exists' do
+      user = User.create(name: "simone", email: "simone@mail.com", password: "mimo")
+      authenticated_user = User.authenticate(email: 'simone@mail.com', password: 'mimo')
+      expect(authenticated_user.id).to eq user.id
+    end
+
+    it 'returns nil given an incorrect email address' do
+      user = User.create(name: "simone", email: "simone@mail.com", password: "mimo")
+
+      expect(User.authenticate(email:'wrong@mail.com', password: 'mimo')).to be_nil
+    end
+
+    it 'returns nil given an incorrect password' do
+      user = User.create(name: "simone", email: "simone@mail.com", password: "mimo")
+
+      expect(User.authenticate(email:'simone@mail.com', password: 'toro')).to be_nil
+    end
+  end
 end
