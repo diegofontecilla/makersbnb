@@ -4,6 +4,6 @@
 
 <ul>
   <% @listings.each do |listing| %>
-    <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}, price: £#{listing.listing_price}, description: #{listing.listing_description}" %> </li>
+    <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}, price: £#{listing.listing_price}, description: #{listing.listing_description}, available dates: #{listing.listing_available_dates}" %> </li>
   <% end %>
 </ul>
