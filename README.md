@@ -39,6 +39,3 @@ Very basic classified adverts for apartment rental.
 - User is redirected back home
 - Home page displays all properties added
 
-#### New Feature
-
-* Dan and I are redoing the dates with html forms =)
