@@ -1,0 +1,5 @@
+<ul>
+  <% @listings.each do |listing| %>
+    <li> <%= "title: #{listing.listing_title}, price: £#{listing.listing_price}, description: #{listing.listing_description}, start date: #{listing.listing_start_date}, end date: #{listing.listing_end_date}" %> </li>
+  <% end %>
+</ul>

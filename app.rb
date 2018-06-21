@@ -64,4 +64,9 @@ class MakersBnb < Sinatra::Base
 		@listing_title = session[:listing_title]
 		erb :requests
 	end
+
+	get '/mylistings' do
+		@listings = Listing.all
+		erb :mylistings
+	end
 end
