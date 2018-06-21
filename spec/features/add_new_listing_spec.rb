@@ -1,19 +1,8 @@
 feature 'adding new property to the list' do
   scenario 'add property' do
-    visit '/'
-    fill_in("name", with: "Diego")
-    fill_in("email", with: "diego@email.com")
-    fill_in("password", with: "test1234")
-    click_button("Submit")
-    visit '/listings/new'
-    fill_in("title", with: "Lovely flat in London")
-    # fill_in("owner", with: "Diego")
-    fill_in("price", with: "1.23")
-    fill_in("description", with: "Oh how I love this apartment!")
-    fill_in("available_dates", with: "20180606-20180608")
-    click_button("Submit")
+    sign_up
+    add_listing
     expect(page).to have_content('Lovely flat in London')
-    expect(page).to have_content('Diego')
     expect(page).to have_content("1.23")
     expect(page).to have_content("Oh how I love this apartment!")
     expect(page).to have_content("20180606,20180607,20180608")
