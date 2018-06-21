@@ -34,7 +34,7 @@ class MakersBnb < Sinatra::Base
 		@dates = DateParser.to_str(
 			DateParser.parse( params["available_dates"] )
 		)
-		Listing.create(params["title"], params["owner"], params["price"], params["description"], @dates)
+		Listing.create(params["title"], params["price"], params["description"], @dates, session[:id])
 		redirect "/listings"
 	end
 
