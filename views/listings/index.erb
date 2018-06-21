@@ -1,9 +1,14 @@
-# <% if @user %>
-# <%= "Welcome, #{@user.name}!"  %>
-# <% end %>
+<% if @user %>
+<%= "Welcome, #{@user.name}!"  %>
+<% end %>
 
 <ul>
   <% @listings.each do |listing| %>
     <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}, price: £#{listing.listing_price}, description: #{listing.listing_description}, available dates: #{listing.listing_available_dates}" %> </li>
+    <% if @user %>
+    <form action="/requests" method="post">
+      <input type="submit" value="Request apartment">
+    </form>
+    <% end %>
   <% end %>
 </ul>
