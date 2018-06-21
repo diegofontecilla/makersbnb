@@ -32,6 +32,7 @@ def add_listing
   fill_in("title", with: "Lovely flat in London")
   fill_in("price", with: "1.23")
   fill_in("description", with: "Oh how I love this apartment!")
-  fill_in("available_dates", with: "20180606-20180608")
+  fill_in("start_date", with: "2018-06-06")
+  fill_in("end_date", with: "2018-06-08")
   click_button("Submit")
 end
