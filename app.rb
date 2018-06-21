@@ -3,7 +3,6 @@ require 'sinatra/flash'
 require 'sinatra'
 require_relative './lib/listing'
 require_relative './lib/user'
-require_relative './lib/date_parser'
 
 class MakersBnb < Sinatra::Base
 	register Sinatra::Flash
@@ -31,10 +30,7 @@ class MakersBnb < Sinatra::Base
 	end
 
 	post "/listings/new" do
-		@dates = DateParser.to_str(
-			DateParser.parse( params["available_dates"] )
-		)
-		Listing.create(params["title"], params["price"], params["description"], @dates, session[:id])
+		Listing.create(params["title"], params["price"], params["description"], params["start_date"], params["end_date"], session[:id])
 		redirect "/listings"
 	end
 
