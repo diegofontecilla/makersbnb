@@ -55,13 +55,13 @@ class MakersBnb < Sinatra::Base
 		redirect '/sessions/new'
 	end
 
-	post '/requests/:id' do
-		session[:listing_id] = params['listing.listing_id']
-		redirect '/requests/:id'
+	post '/requests' do
+		session[:listing_title] = params['title']
+		redirect '/requests'
 	end
 
-	get '/requests/:id' do
-		@listing_id = session[:listing_id]
+	get '/requests' do
+		@listing_title = session[:listing_title]
 		erb :requests
 	end
 end
