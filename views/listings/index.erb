@@ -6,7 +6,8 @@
   <% @listings.each do |listing| %>
     <li> <%= "title: #{listing.listing_title}, owner: #{listing.listing_owner}, price: £#{listing.listing_price}, description: #{listing.listing_description}, available dates: #{listing.listing_available_dates}" %> </li>
     <% if @user %>
-    <form action="/requests" method="post">
+    <form action="/requests/<%= listing.listing_id %>" method="post">
+      <input type="hidden" name="<%= listing.listing_id %>" value="">
       <input type="submit" value="Request apartment">
     </form>
     <% end %>
