@@ -15,15 +15,11 @@ describe Listing do
     expect(Listing.all.last.listing_owner).to eq("simone")
   end
 
-  it 'should return only signed-in user\'s listings' do
-    # Listing.all_for_user(user.id)
+  it "should return only signed-in user's listings" do
     user = User.create(name: "simone", email: "simone@mail.com", password: "mimo")
     user = User.create(name: "Rahul", email: "rahul@mail.com", password: "mimo")
     Listing.create("Lovely flat in London", "5", "My flatmate is a zombie!", "2018-06-21", "2018-06-25", 1)
     Listing.create("Horrible flat in London", "3", "My flatmate is a vampire!", "2018-06-21", "2018-06-25", 2)
-
     expect(Listing.my_listings(1).length).to eq(1)
   end
-
-
 end

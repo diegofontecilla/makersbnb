@@ -8,6 +8,7 @@
     <% if @user %>
     <form action="/requests" method="post">
       <input type="hidden" name="title" value="<%= listing.listing_title %>">
+      <input type="hidden" name="listing_id" value="<%= listing.listing_id %>">
       <input type="submit" value="Request apartment">
     </form>
     <% end %>

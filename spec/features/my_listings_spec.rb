@@ -24,6 +24,6 @@ feature 'Viewing own listings' do
     fill_in("end_date", with: "2018-06-08")
     click_button("Submit")
     visit('/mylistings')
-    expect(page).not_to have_content ("Lovely flat in London")
+    expect(page).not_to have_content("Lovely flat in London")
   end
 end

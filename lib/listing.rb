@@ -1,7 +1,7 @@
 require 'pg'
 
 class Listing
-  attr_reader :listing_id, :listing_title, :listing_owner, :listing_price, :listing_description, :listing_start_date, :listing_end_date
+  attr_reader :listing_id, :listing_title, :listing_owner, :listing_price, :listing_description, :listing_start_date, :listing_end_date, :requested_by
 
   def initialize(listing_id, listing_title, listing_price, listing_description, listing_start_date, listing_end_date, user_id)
     @listing_id = listing_id
@@ -11,6 +11,11 @@ class Listing
     @listing_description = listing_description
     @listing_start_date = listing_start_date
     @listing_end_date = listing_end_date
+    @requested_by = []
+  end
+
+  def push_to_requested_by(booker_id)
+    @requested_by << booker_id
   end
 
   def self.create(title, price, description, start_date, end_date, user_id)
@@ -39,8 +44,13 @@ class Listing
     else
       connection = PG.connect(dbname: 'makersbnb')
     end
-    result = connection.exec("SELECT * FROM apartments WHERE user_id = #{user_id}")
-    result.map { |listing| Listing.new(listing['id'], listing['title'], listing['price'], listing['description'], listing['start_date'], listing['end_date'], listing['user_id']) }
+    result = connection
+      .exec("SELECT * FROM apartments WHERE user_id = #{user_id}")
+      .map { |listing|
+        Listing.new(
+          listing['id'], listing['title'], listing['price'], listing['description'], listing['start_date'], listing['end_date'], listing['user_id']
+        )
+    }
   end
 
   private
