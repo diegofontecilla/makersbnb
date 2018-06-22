@@ -9,23 +9,23 @@
 <div class="container">
   <p class="display-1">
     <ul>
-      <% @listings.each do |listing| %>
-        <li> <%= "title: #{listing.listing_title},
-                  owner: #{listing.listing_owner},
-                  price: £#{listing.listing_price},
-                  description: #{listing.listing_description},
-                  start date: #{listing.listing_start_date},
-                  end date: #{listing.listing_end_date}" %>
-        </li>
-  </p>
-        <% if @user %>
-          <form action="/requests" method="post">
-            <input type="hidden" name="title" value="<%= listing.listing_title %>">
-            <input type="hidden" name="listing_id" value="<%= listing.listing_id %>">
-            <input type="submit" value="Request apartment">
-          </form>
-        <% end %>
-      <% end %>
+    <% @listings.each do |listing| %>
+      <li> <%= "#{listing.listing_title}:
+                #{listing.listing_description} |
+                £#{listing.listing_price}
+                | from: #{listing.listing_start_date}
+                to: #{listing.listing_end_date}
+                | #{listing.listing_owner}" %>
+      </li>
+    </p>
+    <% if @user %>
+    <form action="/requests" method="post">
+      <input type="hidden" name="title" value="<%= listing.listing_title %>">
+      <input type="hidden" name="listing_id" value="<%= listing.listing_id %>">
+      <input type="submit" value="Request apartment">
+    </form>
+    <% end %>
+  <% end %>
     </ul>
   </div>
 </div>
