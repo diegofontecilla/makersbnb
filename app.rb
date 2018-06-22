@@ -3,6 +3,7 @@ require 'sinatra/flash'
 require 'sinatra'
 require_relative './lib/listing'
 require_relative './lib/user'
+require_relative './lib/request'
 
 class MakersBnb < Sinatra::Base
 	register Sinatra::Flash
@@ -55,13 +56,23 @@ class MakersBnb < Sinatra::Base
 		redirect '/sessions/new'
 	end
 
-	post '/requests/:id' do
-		session[:listing_id] = params['listing.listing_id']
-		redirect '/requests/:id'
+	post '/requests' do
+		session[:listing_title] = params['title']
+		Request.create(
+			listing_id: params['listing_id'],
+			booker_id: session[:id]
+		)
+		redirect '/requests'
 	end
 
-	get '/requests/:id' do
-		@listing_id = session[:listing_id]
+	get '/requests' do
+		@listing_title = session[:listing_title]
 		erb :requests
+	end
+
+	get '/mylistings' do
+		# @listings = Listing.my_listings(session[:id])
+		@listings = Request.made_to_host(host_id: session[:id])
+		erb :mylistings
 	end
 end
