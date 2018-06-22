@@ -33,6 +33,16 @@ class Listing
     result.map { |listing| Listing.new(listing['id'], listing['title'], listing['price'], listing['description'], listing['start_date'], listing['end_date'], listing['user_id']) }
   end
 
+  def self.my_listings(user_id)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'makersbnb_test')
+    else
+      connection = PG.connect(dbname: 'makersbnb')
+    end
+    result = connection.exec("SELECT * FROM apartments WHERE user_id = #{user_id}")
+    result.map { |listing| Listing.new(listing['id'], listing['title'], listing['price'], listing['description'], listing['start_date'], listing['end_date'], listing['user_id']) }
+  end
+
   private
 
   def find_username_by_id(user_id)

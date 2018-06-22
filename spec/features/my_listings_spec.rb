@@ -6,7 +6,7 @@ feature 'Viewing own listings' do
     expect(page).to have_content ("Lovely flat in London")
   end
 
-  xscenario "other users' listings do not show up" do
+  scenario "other users' listings do not show up" do
     sign_up
     add_listing
     visit("/listings/new")
@@ -23,6 +23,7 @@ feature 'Viewing own listings' do
     fill_in("start_date", with: "2018-06-06")
     fill_in("end_date", with: "2018-06-08")
     click_button("Submit")
+    visit('/mylistings')
     expect(page).not_to have_content ("Lovely flat in London")
   end
 end

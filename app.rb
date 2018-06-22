@@ -57,6 +57,7 @@ class MakersBnb < Sinatra::Base
 
 	post '/requests' do
 		session[:listing_title] = params['title']
+		# Listing.make_request(listing_id, user_id)
 		redirect '/requests'
 	end
 
@@ -66,7 +67,7 @@ class MakersBnb < Sinatra::Base
 	end
 
 	get '/mylistings' do
-		@listings = Listing.all
+		@listings = Listing.my_listings(session[:id])
 		erb :mylistings
 	end
 end
