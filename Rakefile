@@ -19,23 +19,21 @@ task :setup do
                     name VARCHAR(140), email VARCHAR(60), password VARCHAR(60));")
     connection.exec("CREATE TABLE apartments (id SERIAL PRIMARY KEY, \
                     title VARCHAR(140), price VARCHAR(8), description VARCHAR(2000), start_date VARCHAR(10), end_date VARCHAR(10), user_id INTEGER REFERENCES users(id));")
-
-    # When we want to connect the database tables, use this:
-    # connection.exec("CREATE TABLE apartments (id SERIAL PRIMARY KEY, title VARCHAR(140), owner VARCHAR(60), users_id INTEGER REFERENCES users(id));")
+    connection.exec("CREATE TABLE requests (id SERIAL PRIMARY KEY, \
+                    listing_id INTEGER REFERENCES apartments(id), booker_id INTEGER REFERENCES users(id));")
   end
 end
 
 task :test_database_setup do
-
   # p "Cleaning database"
 
   connection = PG.connect(dbname: 'makersbnb_test')
 
   # Clear the databases
-  connection.exec("TRUNCATE apartments, users;")
+  connection.exec("TRUNCATE apartments, users, requests;")
   connection.exec("ALTER SEQUENCE apartments_id_seq RESTART;")
   connection.exec("ALTER SEQUENCE users_id_seq RESTART;")
-
+  connection.exec("ALTER SEQUENCE requests_id_seq RESTART;")
 end
 
 task :teardown do
