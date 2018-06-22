@@ -71,7 +71,7 @@ class MakersBnb < Sinatra::Base
 	end
 
 	get '/mylistings' do
-		# @listings = Listing.my_listings(session[:id])
+		redirect '/listings' if session[:id].nil?
 		@listings = Request.made_to_host(host_id: session[:id])
 		erb :mylistings
 	end

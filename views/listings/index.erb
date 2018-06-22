@@ -1,122 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <!-- <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-    crossorigin="anonymous">
-
-</head>
-
-<body>
-
 <center>
 <% if @user %>
-<h1> <%= "Welcome, #{@user.name}!"  %> </h1>
+  <h1> <%= "Welcome, #{@user.name}!"  %> </h1>
 <% end %>
 </center>
 
 <div class="jumbotron jumbotron-fluid">
 
-  <div class="container">
-    <p class="display-1">
+<div class="container">
+  <p class="display-1">
     <ul>
-    <% @listings.each do |listing| %>
-      <li> <%= "title: #{listing.listing_title},
-                owner: #{listing.listing_owner},
-                price: £#{listing.listing_price},
-                description: #{listing.listing_description},
-                start date: #{listing.listing_start_date},
-                end date: #{listing.listing_end_date}" %>
-      </li>
-    </p>
-    <% if @user %>
-    <form action="/requests" method="post">
-      <input type="hidden" name="title" value="<%= listing.listing_title %>">
-      <input type="hidden" name="listing_id" value="<%= listing.listing_id %>">
-      <input type="submit" value="Request apartment">
-    </form>
-    <% end %>
-  <% end %>
+      <% @listings.each do |listing| %>
+        <li> <%= "title: #{listing.listing_title},
+                  owner: #{listing.listing_owner},
+                  price: £#{listing.listing_price},
+                  description: #{listing.listing_description},
+                  start date: #{listing.listing_start_date},
+                  end date: #{listing.listing_end_date}" %>
+        </li>
+  </p>
+        <% if @user %>
+          <form action="/requests" method="post">
+            <input type="hidden" name="title" value="<%= listing.listing_title %>">
+            <input type="hidden" name="listing_id" value="<%= listing.listing_id %>">
+            <input type="submit" value="Request apartment">
+          </form>
+        <% end %>
+      <% end %>
     </ul>
   </div>
 </div>
 
-
-  <!--###################START HERE####################-->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8 m-auto">
-
-        <!-- SLIDER WITH CAPTIONS -->
-        <div id="slider4" class="carousel slide mb-5" data-ride="carousel">
-
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block img-fluid" src="https://img.thetiscdn.it/uploads/imgup/28831it-london-garden-villa03.jpg" alt="First Slide">
-              <div class="carousel-caption d-none d-md-block">
-                <p></p>
-              </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 m-auto">
+      <div id="slider4" class="carousel slide mb-5" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block img-fluid" src="https://img.thetiscdn.it/uploads/imgup/28831it-london-garden-villa03.jpg" alt="First Slide">
+            <div class="carousel-caption d-none d-md-block">
+              <br>
             </div>
-
           </div>
-          <center>
-            <br></br>
-          <div>
-          <h1><a href="/">Makersbnb</a></h1>
-          </div
-        </center>
-
-
-          <!-- CONTROLS -->
-          <!-- <a href="#slider4" class="carousel-control-prev" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-
-          <a href="#slider4" class="carousel-control-next" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </a> -->
         </div>
-
+        <center>
+          <br></br>
+          <div>
+            <h1><a href="/">Makersbnb</a></h1>
+          </div>
+        </center>
       </div>
     </div>
   </div>
+</div>
 
+<div class="container">
+  <div class="card-columns"></div>
+</div>
 
+<script>
+  $('.carousel').carousel({
+    interval: 3000,
+    keyboard: true,
+    pause: 'hover',
+    wrap: true
+  });
 
-    <div class="container">
-         <!-- CARD COLUMNS -->
-        <div class="card-columns">
+  $('#slider4').on('slide.bs.carousel', function () {
+    console.log('SLIDE!');
+  });
 
-      </div>
-
-
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script> -->
-
-  <script>
-    $('.carousel').carousel({
-      interval: 3000,
-      keyboard: true,
-      pause: 'hover',
-      wrap: true
-    });
-
-    $('#slider4').on('slide.bs.carousel', function () {
-      console.log('SLIDE!');
-    });
-
-    $('#slider4').on('slid.bs.carousel', function () {
-      console.log('SLID!');
-    });
-  </script>
-
-</body>
-
-</html>
+  $('#slider4').on('slid.bs.carousel', function () {
+    console.log('SLID!');
+  });
+</script>
