@@ -1,6 +1,17 @@
-<ul>
-  <% @listings.each do |listing| %>
-    <li> <%= "title: #{listing.listing_title}, price: £#{listing.listing_price}, description: #{listing.listing_description}, start date: #{listing.listing_start_date}, end date: #{listing.listing_end_date}, requested by:
-    #{listing.requested_by}" %> </li>
-  <% end %>
-</ul>
+<div class="jumbotron jumbotron-fluid">
+
+  <div class="container">
+    <p class="display-1">
+
+      <ul>
+        <% @listings.each do |listing| %>
+          <li> <%= "#{listing.listing_title}: #{listing.listing_description} | £#{listing.listing_price} "%>
+           <br>
+           <%= "from: #{listing.listing_start_date} to: #{listing.listing_end_date}" %>
+           <br>
+           <%= "requested by: #{listing.requested_by}" %> </li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+</div>
